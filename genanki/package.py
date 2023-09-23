@@ -47,8 +47,8 @@ class Package:
 
       media_file_idx_to_path = dict(enumerate(self.media_files))
       media_json = {idx: os.path.basename(path) for idx, path in media_file_idx_to_path.items()}
-      outzip.writestr('media', json.dumps(media_json))
-
+      outzip.writestr('media', json.dumps(media_json, ensure_ascii=False))
+      
       for idx, path in media_file_idx_to_path.items():
         outzip.write(path, str(idx))
 
